@@ -1,2 +1,2 @@
-const soma = (x, y) => a + b;
-alert(soma(1, 3));
+const soma = (x, y) => x + y;
+alert(soma(7, 3));
