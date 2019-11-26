@@ -5,6 +5,7 @@ export default function TechItem({ tech, index, handleClick }) {
   return (
     <li>
       {tech}
+      {' '}
       <button onClick={(e) => handleClick(e, index)} type="button">Apagar</button>
     </li>
   );

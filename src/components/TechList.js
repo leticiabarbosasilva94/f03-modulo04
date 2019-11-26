@@ -3,8 +3,22 @@ import TechItem from './TechItem';
 
 export default class TechList extends Component {
   state = {
-    newTech: 'a',
-    techs: ['NodeJS', 'ReactJS', 'React Native']
+    newTech: '',
+    techs: []
+  }
+
+  componentDidMount() {
+    const savedTechs = JSON.parse(localStorage.getItem('savedTechs'));
+    this.setState({ techs: savedTechs });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { techs: prevTechs } = prevState;
+    const { techs } = this.state;
+
+    if (prevTechs === techs) return;
+
+    localStorage.setItem('savedTechs', JSON.stringify(techs));
   }
 
   handleInputChange = (e) => {
@@ -34,9 +48,8 @@ export default class TechList extends Component {
 
     return (
       <>
-
-        <h1>{newTech}</h1>
-
+        <h1>Almost a todo list</h1>
+        <p>Write and press ENTER</p>
         <ul>
           {techs.map((tech, index) => (
             <TechItem
@@ -47,14 +60,12 @@ export default class TechList extends Component {
             />
           ))}
         </ul>
-
         <input
           type="text"
           onChange={this.handleInputChange}
           onKeyUp={this.handleKeyPress}
           value={newTech}
         />
-
       </>
     );
   }
