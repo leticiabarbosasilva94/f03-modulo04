@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 
-import logo from './assets/rocketseat-logo.png';
+import TechList from './components/TechList';
 
 function App() {
-  return <img alt="bla" src={logo} />;
+  return <TechList />;
 }
 
 export default App;
